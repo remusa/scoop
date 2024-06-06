@@ -1,6 +1,6 @@
 param(
     # overwrite upstream param
-    [String]$upstream = "remusa/scoop:main"
+    [String]$upstream = "remusa/scoop:master"
 )
 
 if (!$env:SCOOP_HOME) { $env:SCOOP_HOME = Convert-Path (scoop prefix scoop) }
