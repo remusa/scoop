@@ -22,7 +22,7 @@
     "uninstaller": {
         "script": ""
     },
-    "bin": "",
+    "bin": "AnimeTV.exe",
     "env_add_path": [
         "",
         ""
