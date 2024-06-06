@@ -11,6 +11,7 @@
         }
     },
     "extract_dir": "AnimeTV-win32-x64",
+    "hash": "8249f9b7c04765f803c6b85c549ec390c3e8c28154efb4108fd00c890be0e2f0",
     "pre_install": "",
     "installer": {
         "script": ""
@@ -22,7 +23,7 @@
     "uninstaller": {
         "script": ""
     },
-    "bin": "AnimeTV.exe",
+    // "bin": "",
     "env_add_path": [
         "",
         ""
