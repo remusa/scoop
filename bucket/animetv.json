@@ -28,8 +28,7 @@
         ""
     ],
     "persist": [
-        "",
-        ""
+        "local\\animetv"
     ],
     "checkver": {
         "github": "https://github.com/amarullz/AnimeTV"
