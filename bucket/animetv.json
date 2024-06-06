@@ -1,14 +1,15 @@
 {
     "##": "This file is a template. Fill the blanks and add or remove fields as necessary.",
-    "version": "5.0.0",
+    "version": "5.1.4",
     "description": "Watch Anime in Your AndroidTV",
     "homepage": "https://amarullz.com/",
     "license": "Apache License 2.0",
     "notes": "",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/amarullz/AnimeTV/releases/download/5.0.0/animetv-5.1.4-setup.exe",
-            "hash": ""
+            "url": "https://github.com/amarullz/AnimeTV/releases/download/5.0.0/AnimeTV-win32-x64-5.1.4.zip",
+            "hash": "8249f9b7c04765f803c6b85c549ec390c3e8c28154efb4108fd00c890be0e2f0",
+            "extract_dir": "AnimeTV-win32-x64"
         }
     },
     "pre_install": "",
@@ -22,7 +23,7 @@
     "uninstaller": {
         "script": ""
     },
-    "bin": "animetv.exe",
+    "bin": "AnimeTV.exe",
     "env_add_path": [
         "",
         ""
@@ -38,11 +39,12 @@
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/amarullz/AnimeTV/releases/download/v$version/animetv-v$version-setup.exe"
+                "url": "https://github.com/amarullz/AnimeTV/releases/download/5.0.0/AnimeTV-win32-x64-$version.zip",
+                "extract_dir": "AnimeTV-$version"
             }
         },
         "hash": {
-            "url": "",
+            "url": "$url.sha256",
             "regex": ""
         }
     }
