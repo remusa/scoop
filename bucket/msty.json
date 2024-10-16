@@ -2,7 +2,7 @@
     "version": "latest",
     "description": "MSTY - Multi-Scenario Text Yielder Language Model",
     "architecture": {
-        "x64": {
+        "64bit": {
             "url": "https://assets.msty.app/win/auto/Msty_x64.exe",
             "hash": "sha256:ECDEB6D9764FAAAB95CA01DA15931BD556E2E2DF3CBADDFF07341B6269E82D86"
         }
