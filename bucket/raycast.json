@@ -5,7 +5,7 @@
     "license": "Proprietary",
     "installer": {
         "script": [
-            "winget install --id Raycast.Raycast -s winget --accept-source-agreements --accept-package-agreements --silent --force"
+            "winget install Raycast"
         ]
     },
     "checkver": {
