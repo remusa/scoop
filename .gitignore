@@ -6,3 +6,6 @@ checkver-*.html
 
 # Node.js
 node_modules/
+
+# Package manager lock files
+package-lock.json
