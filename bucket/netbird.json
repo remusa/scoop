@@ -5,40 +5,30 @@
     "license": "BSD-3-Clause",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/netbirdio/netbird/releases/download/v0.73.1/netbird_installer_0.73.1_windows_amd64.exe",
-            "hash": "sha256:29a4f1c77f6c95304e6151f6140f1011f7efd18c689bd9c378e1bc2cb36bfce5"
+            "url": "https://github.com/netbirdio/netbird/releases/download/v0.73.1/netbird_0.73.1_windows_amd64.tar.gz",
+            "hash": "sha256:e4bbb81db9a852acf286c656cc41e8febc4ae64644ac916d42d310e5aec70961"
         },
         "arm64": {
-            "url": "https://github.com/netbirdio/netbird/releases/download/v0.73.1/netbird_installer_0.73.1_windows_arm64.exe",
-            "hash": "sha256:1e51de4e5a76ccae8ea9a22b664afaa545f07ed029bb663d47d57cb666b27cd7"
+            "url": "https://github.com/netbirdio/netbird/releases/download/v0.73.1/netbird_0.73.1_windows_arm64.tar.gz",
+            "hash": "sha256:c5d84c3e72334f3d82bd5a100c27d7050580f56a87b963d4ae26e3ecff5c3d3e"
         }
     },
-    "installer": {
-        "script": [
-            "Start-Process -FilePath \"$dir\\$fname\" -ArgumentList '/S', \"/D=$dir\" -Wait"
-        ]
-    },
-    "uninstaller": {
-        "script": [
-            "Stop-Service -Name 'NetBird Agent' -ErrorAction SilentlyContinue",
-            "if (Test-Path \"$dir\\Uninstall.exe\") { Start-Process -FilePath \"$dir\\Uninstall.exe\" -ArgumentList '/S' -Wait }"
-        ]
-    },
-    "bin": [
-        "netbird.exe",
-        "netbird-ui.exe"
-    ],
+    "bin": "netbird.exe",
     "checkver": {
         "github": "https://github.com/netbirdio/netbird"
     },
     "autoupdate": {
         "architecture": {
             "64bit": {
-                "url": "https://github.com/netbirdio/netbird/releases/download/v$version/netbird_installer_$version_windows_amd64.exe"
+                "url": "https://github.com/netbirdio/netbird/releases/download/v$version/netbird_$version_windows_amd64.tar.gz"
             },
             "arm64": {
-                "url": "https://github.com/netbirdio/netbird/releases/download/v$version/netbird_installer_$version_windows_arm64.exe"
+                "url": "https://github.com/netbirdio/netbird/releases/download/v$version/netbird_$version_windows_arm64.tar.gz"
             }
+        },
+        "hash": {
+            "url": "https://github.com/netbirdio/netbird/releases/download/v$version/netbird_$version_checksums.txt",
+            "regex": "([a-fA-F0-9]{64})\\s+$basename"
         }
     }
 }
