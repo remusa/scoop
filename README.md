@@ -1,42 +1,24 @@
-# Scoop Bucket Template
+# scoop
 
-<!-- Uncomment the following line after replacing placeholders -->
-<!-- [![Tests](https://github.com/<username>/<bucketname>/actions/workflows/ci.yml/badge.svg)](https://github.com/<username>/<bucketname>/actions/workflows/ci.yml) [![Excavator](https://github.com/<username>/<bucketname>/actions/workflows/excavator.yml/badge.svg)](https://github.com/<username>/<bucketname>/actions/workflows/excavator.yml) -->
+[![Tests](https://github.com/remusa/scoop/actions/workflows/ci.yml/badge.svg)](https://github.com/remusa/scoop/actions/workflows/ci.yml)
+[![Excavator](https://github.com/remusa/scoop/actions/workflows/excavator.yml/badge.svg)](https://github.com/remusa/scoop/actions/workflows/excavator.yml)
 
-Template bucket for [Scoop](https://scoop.sh), the Windows command-line installer.
+Personal [Scoop](https://scoop.sh) bucket for Windows apps.
 
-## How do I use this template?
-
-1. Generate your own copy of this repository with the "Use this template"
-   button.
-2. Allow all GitHub Actions:
-   - Navigate to `Settings` - `Actions` - `General` - `Actions permissions`.
-   - Select `Allow all actions and reusable workflows`.
-   - Then `Save`.
-3. Allow writing to the repository from within GitHub Actions:
-   - Navigate to `Settings` - `Actions` - `General` - `Workflow permissions`.
-   - Select `Read and write permissions`.
-   - Then `Save`.
-4. Document the bucket in `README.md`.
-5. Replace the placeholder repository string in `bin/auto-pr.ps1`.
-6. Create new manifests by copying `bucket/app-name.json.template` to
-   `bucket/<app-name>.json`.
-7. Commit and push changes.
-8. If you'd like your bucket to be indexed on `https://scoop.sh`, add the
-   topic `scoop-bucket` to your repository.
-
-## How do I install these manifests?
-
-After manifests have been committed and pushed, run the following:
+## Usage
 
 ```pwsh
 scoop bucket add remusa https://github.com/remusa/scoop
-scoop install remusa/<manifestname>
+scoop install remusa/<app>
 ```
 
-## How do I contribute new manifests?
+## Apps
 
-To make a new manifest contribution, please read the [Contributing
-Guide](https://github.com/ScoopInstaller/.github/blob/main/.github/CONTRIBUTING.md)
-and [App Manifests](https://github.com/ScoopInstaller/Scoop/wiki/App-Manifests)
-wiki page.
+| App | Version |
+| --- | ------- |
+| futo-notes | [![](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fremusa%2Fscoop%2Fmaster%2Fversions.json&query=%24.futo-notes&label=futo-notes&color=blue)](https://gitlab.futo.org/futo-notes/futo-notes) |
+| msty | [![](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fremusa%2Fscoop%2Fmaster%2Fversions.json&query=%24.msty&label=msty&color=blue)](https://msty.app) |
+| netbird-ui | [![](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fremusa%2Fscoop%2Fmaster%2Fversions.json&query=%24.netbird-ui&label=netbird-ui&color=blue)](https://github.com/netbirdio/netbird) |
+| open-webui-desktop | [![](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fremusa%2Fscoop%2Fmaster%2Fversions.json&query=%24.open-webui-desktop&label=open-webui-desktop&color=blue)](https://github.com/open-webui/desktop) |
+| raycast | [![](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fremusa%2Fscoop%2Fmaster%2Fversions.json&query=%24.raycast&label=raycast&color=blue)](https://www.raycast.com/windows) |
+| rhi | [![](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fremusa%2Fscoop%2Fmaster%2Fversions.json&query=%24.rhi&label=rhi&color=blue)](https://github.com/RankFTW/RHI) |
