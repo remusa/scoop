@@ -23,11 +23,10 @@ jobs:
         with:
           repository: ScoopInstaller/Scoop
           path: scoop_core
-      - name: Init Test Suite
-        uses: potatoqualitee/psmodulecache@v5.1
-        with:
-          modules-to-cache: BuildHelpers
-          shell: powershell
+      - name: Install test dependencies
+        shell: powershell
+        run: |
+          Install-Module -Name BuildHelpers, Pester -Force -SkipPublisherCheck
       - name: Test Bucket
         shell: powershell
         run: |
@@ -47,11 +46,10 @@ jobs:
         with:
           repository: ScoopInstaller/Scoop
           path: scoop_core
-      - name: Init Test Suite
-        uses: potatoqualitee/psmodulecache@v5.1
-        with:
-          modules-to-cache: BuildHelpers
-          shell: pwsh
+      - name: Install test dependencies
+        shell: pwsh
+        run: |
+          Install-Module -Name BuildHelpers, Pester -Force -SkipPublisherCheck
       - name: Test Bucket
         shell: pwsh
         run: |
