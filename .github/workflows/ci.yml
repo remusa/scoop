@@ -26,7 +26,8 @@ jobs:
       - name: Install test dependencies
         shell: powershell
         run: |
-          Install-Module -Name BuildHelpers, Pester -MaximumVersion 5.99.99 -Force -SkipPublisherCheck
+          Install-Module -Name BuildHelpers -Force -SkipPublisherCheck
+          Install-Module -Name Pester -MaximumVersion 5.99.99 -Force -SkipPublisherCheck
       - name: Test Bucket
         shell: powershell
         run: |
@@ -49,7 +50,8 @@ jobs:
       - name: Install test dependencies
         shell: pwsh
         run: |
-          Install-Module -Name BuildHelpers, Pester -MaximumVersion 5.99.99 -Force -SkipPublisherCheck
+          Install-Module -Name BuildHelpers -Force -SkipPublisherCheck
+          Install-Module -Name Pester -MaximumVersion 5.99.99 -Force -SkipPublisherCheck
       - name: Test Bucket
         shell: pwsh
         run: |
