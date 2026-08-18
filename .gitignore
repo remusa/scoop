@@ -4,6 +4,9 @@
 page.html
 checkver-*.html
 
+# Output
+output/
+
 # Node.js
 node_modules/
 
