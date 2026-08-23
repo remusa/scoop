@@ -3,6 +3,10 @@
     "description": "Choose the browser to open URLs with, from a simple popup menu",
     "homepage": "https://github.com/U-C-S/Hurl",
     "license": "MIT",
+    "notes": [
+        "Requires Windows App Runtime. If Hurl doesn't appear in Default Apps, install it from: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads",
+        "After install, set Hurl as default in: Settings > Apps > Default apps > Hurl"
+    ],
     "architecture": {
         "64bit": {
             "url": "https://github.com/U-C-S/Hurl/releases/download/v0.9.3/Hurl_Installer.exe",
