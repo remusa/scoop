@@ -4,7 +4,6 @@
     "homepage": "https://github.com/U-C-S/Hurl",
     "license": "MIT",
     "notes": [
-        "Requires Windows App Runtime. If Hurl doesn't appear in Default Apps, install it from: https://learn.microsoft.com/en-us/windows/apps/windows-app-sdk/downloads",
         "After install, set Hurl as default in: Settings > Apps > Default apps > Hurl"
     ],
     "architecture": {
@@ -13,11 +12,17 @@
             "hash": "sha256:2E89AB9753A2BD11EE34341451F7D6638D0157065156DFD0FBD23E9880DBEFC2"
         }
     },
-    "installer": {
-        "script": [
-            "Start-Process -FilePath \"$dir\\Hurl_Installer.exe\" -ArgumentList '/VERYSILENT','/NORESTART' -Wait"
+    "innosetup": true,
+    "bin": [
+        "Hurl.exe",
+        ["Launcher.exe", "hurl-launcher"]
+    ],
+    "shortcuts": [
+        [
+            "Launcher.exe",
+            "Hurl"
         ]
-    },
+    ],
     "checkver": {
         "github": "https://github.com/U-C-S/Hurl"
     },
