@@ -10,6 +10,13 @@
         }
     },
     "innosetup": true,
+    "bin": "Hurl.exe",
+    "shortcuts": [
+        [
+            "Launcher.exe",
+            "Hurl"
+        ]
+    ],
     "checkver": {
         "github": "https://github.com/U-C-S/Hurl"
     },
