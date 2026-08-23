@@ -9,7 +9,11 @@
             "hash": "sha256:FB5F10610D4E2606AC6A1531DEE22200BD2F33FD68D8868360AD7A8B41D34D9A"
         }
     },
-    "innosetup": true,
+    "installer": {
+        "script": [
+            "& \"$dir\\DisplayMagicianSetup_v2.7.2.1.exe\" /S"
+        ]
+    },
     "checkver": {
         "url": "https://github.com/terrymacdonald/DisplayMagician/releases",
         "regex": "DisplayMagician v(\\d+\\.\\d+\\.\\d+)"
