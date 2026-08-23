@@ -1,0 +1,23 @@
+{
+    "version": "0.9.3",
+    "description": "Choose the browser to open URLs with, from a simple popup menu",
+    "homepage": "https://github.com/U-C-S/Hurl",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/U-C-S/Hurl/releases/download/v0.9.3/Hurl_Installer.exe",
+            "hash": "sha256:2E89AB9753A2BD11EE34341451F7D6638D0157065156DFD0FBD23E9880DBEFC2"
+        }
+    },
+    "innosetup": true,
+    "checkver": {
+        "github": "https://github.com/U-C-S/Hurl"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/U-C-S/Hurl/releases/download/v$version/Hurl_Installer.exe"
+            }
+        }
+    }
+}
