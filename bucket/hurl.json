@@ -9,14 +9,11 @@
             "hash": "sha256:2E89AB9753A2BD11EE34341451F7D6638D0157065156DFD0FBD23E9880DBEFC2"
         }
     },
-    "innosetup": true,
-    "bin": "Hurl.exe",
-    "shortcuts": [
-        [
-            "Launcher.exe",
-            "Hurl"
+    "installer": {
+        "script": [
+            "Start-Process -FilePath \"$dir\\Hurl_Installer.exe\" -ArgumentList '/VERYSILENT','/NORESTART' -Wait"
         ]
-    ],
+    },
     "checkver": {
         "github": "https://github.com/U-C-S/Hurl"
     },
