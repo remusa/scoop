@@ -8,11 +8,18 @@ on:
       - 'bucket/*.json'
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: write
+
 jobs:
   update-versions:
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@main
+      - uses: actions/checkout@v7
       - name: Generate versions.json
         shell: pwsh
         run: .\bin\generate-versions.ps1
