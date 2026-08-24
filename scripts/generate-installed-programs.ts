@@ -28,6 +28,7 @@ function normalize(name: string): string {
     .toLowerCase()
     .replace(/\s*\(x64\)|\s*\(x86\)|\s*\(arm64\)/gi, "")
     .replace(/\s*edition/gi, "")
+    .replace(/\(r\)/gi, "")
     .replace(/\s+/g, " ")
     .trim();
 }
@@ -224,6 +225,8 @@ const CATEGORY_OVERRIDES: Record<string, Category> = {
   "amazongames-userinstall": "Gaming",
   "redlauncher": "Gaming", "goggalaxy": "Gaming",
   "deus ex": "Games", "deus ex: human revolution": "Games",
+  "metro 2033": "Games", "mass effect": "Games",
+  "bizhawk": "Gaming", "retroarch": "Gaming", "rpcs3": "Gaming",
   "rtss": "Gaming", "vibrance-gui": "Gaming", "vibrance gui": "Gaming",
   "tinynvidiaupdatechecker": "Gaming", "tiny nvidia update checker": "Gaming",
   "ps3-system-software": "Gaming", "ps3 system software": "Gaming",
@@ -238,11 +241,11 @@ const CATEGORY_OVERRIDES: Record<string, Category> = {
   "picard": "Media", "losslesscut": "Media", "yt-dlp": "Media",
   "ytdlp-interface": "Media", "gallery-dl": "Media",
   "streamlink twitch gui": "Media", "rode connect": "Media",
-  "rode central": "Media", "equalizer apo": "Media", "fxsound": "Media",
+  "rode central": "Media", "rode": "Media", "equalizer apo": "Media", "fxsound": "Media",
   "potplayer": "Media", "comicrack community edition": "Media",
   "opencomic": "Media", "blackmagic raw": "Media",
   "blackmagic resolve": "Media", "davinci resolve control panels": "Media",
-  "id ": "Media", "rode application fonts": "Media",
+  "id": "Media", "rode application fonts": "Media",
   "caesium-image-compressor": "Media", "caesium image compressor": "Media",
   "exifcleaner": "Media", "exif cleaner": "Media",
   // Browsers
@@ -363,6 +366,17 @@ const CATEGORY_OVERRIDES: Record<string, Category> = {
   "yubikey manager": "Utilities", "openal": "Utilities",
   "jdownloader": "Utilities", "abdownloadmanager": "Utilities",
   "ab download manager": "Utilities", "xdman": "Utilities",
+  "monarch": "Utilities", "displaymagician": "Utilities",
+  "qbittorrent": "Utilities", "qbittorrent-enhanced": "Utilities",
+  "aria2": "Utilities", "xh": "Utilities", "yazi": "Utilities",
+  "nvcleanstall": "Utilities", "nvui": "Utilities",
+  "opennetmeter": "Utilities", "cru": "Utilities",
+  "keyboardstateview": "Utilities", "myphoneexplorer": "Utilities",
+  "tradeskillmaster": "Utilities", "gentle-ai": "Productivity",
+  "epic online services": "Gaming", "intel presentmon": "Development",
+  "intel(r) presentmon": "Development",
+  "rode application fonts": "Media", "bt": "Utilities",
+  "shiru": "Games", "vibepollo": "Games",
   // Fonts (Utilities)
   "firacode": "Utilities", "firacode-nf-mono": "Utilities",
   "jetbrains-mono": "Utilities", "jetbrainsmono-nf-mono": "Utilities",
@@ -414,7 +428,7 @@ function categorize(p: Program): Category {
   // 1. Manual overrides — try exact match, then check if normalized name starts with any override key
   if (CATEGORY_OVERRIDES[norm]) return CATEGORY_OVERRIDES[norm];
   for (const [key, cat] of Object.entries(CATEGORY_OVERRIDES)) {
-    if (norm.startsWith(key + " ") || norm.startsWith(key + "-") || norm === key) return cat;
+    if (norm.startsWith(key + " ") || norm.startsWith(key + "-") || norm === key || norm.startsWith(key)) return cat;
   }
 
   // 2. Publisher-based game detection
