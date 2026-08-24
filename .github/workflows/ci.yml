@@ -16,12 +16,9 @@ permissions:
   contents: read
 
 jobs:
-  test:
-    name: ${{ matrix.shell }}
+  test_powershell:
+    name: WindowsPowerShell
     runs-on: windows-latest
-    strategy:
-      matrix:
-        shell: [powershell, pwsh]
     steps:
       - name: Checkout Bucket
         uses: actions/checkout@v7
@@ -37,16 +34,47 @@ jobs:
         uses: actions/cache@v4
         with:
           path: ~/Documents/WindowsPowerShell/Modules
-          key: ${{ matrix.shell }}-modules-${{ hashFiles('bin/test.ps1') }}
+          key: powershell-modules-${{ hashFiles('bin/test.ps1') }}
           restore-keys: |
-            ${{ matrix.shell }}-modules-
+            powershell-modules-
       - name: Install test dependencies
-        shell: ${{ matrix.shell }}
+        shell: powershell
         run: |
           Install-Module -Name BuildHelpers -Force -SkipPublisherCheck
           Install-Module -Name Pester -MaximumVersion 5.99.99 -Force -SkipPublisherCheck
       - name: Test Bucket
-        shell: ${{ matrix.shell }}
+        shell: powershell
+        run: |
+          $env:SCOOP_HOME="$(Convert-Path '.\scoop_core')"
+          .\my_bucket\bin\test.ps1
+  test_pwsh:
+    name: PowerShell
+    runs-on: windows-latest
+    steps:
+      - name: Checkout Bucket
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 2
+          path: my_bucket
+      - name: Checkout Scoop
+        uses: actions/checkout@v7
+        with:
+          repository: ScoopInstaller/Scoop
+          path: scoop_core
+      - name: Cache PowerShell modules
+        uses: actions/cache@v4
+        with:
+          path: ~/Documents/PowerShell/Modules
+          key: pwsh-modules-${{ hashFiles('bin/test.ps1') }}
+          restore-keys: |
+            pwsh-modules-
+      - name: Install test dependencies
+        shell: pwsh
+        run: |
+          Install-Module -Name BuildHelpers -Force -SkipPublisherCheck
+          Install-Module -Name Pester -MaximumVersion 5.99.99 -Force -SkipPublisherCheck
+      - name: Test Bucket
+        shell: pwsh
         run: |
           $env:SCOOP_HOME="$(Convert-Path '.\scoop_core')"
           .\my_bucket\bin\test.ps1
