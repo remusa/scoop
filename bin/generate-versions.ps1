@@ -14,4 +14,4 @@ $versions.GetEnumerator() | Sort-Object Name | ForEach-Object {
     $sorted[$_.Name] = $_.Value
 }
 
-$sorted | ConvertTo-Json | Set-Content -LiteralPath $versionsPath -NoNewline
+$sorted | ConvertTo-Json | Set-Content -LiteralPath $versionsPath
