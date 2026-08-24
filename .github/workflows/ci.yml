@@ -8,52 +8,45 @@ on:
   pull_request:
   workflow_dispatch:
 
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
 jobs:
-  test_powershell:
-    name: WindowsPowerShell
+  test:
+    name: ${{ matrix.shell }}
     runs-on: windows-latest
+    strategy:
+      matrix:
+        shell: [powershell, pwsh]
     steps:
       - name: Checkout Bucket
-        uses: actions/checkout@main
+        uses: actions/checkout@v7
         with:
           fetch-depth: 2
           path: my_bucket
       - name: Checkout Scoop
-        uses: actions/checkout@main
+        uses: actions/checkout@v7
         with:
           repository: ScoopInstaller/Scoop
           path: scoop_core
+      - name: Cache PowerShell modules
+        uses: actions/cache@v4
+        with:
+          path: ~\Documents\WindowsPowerShell\Modules
+          key: ${{ matrix.shell }}-modules-${{ hashFiles('bin/test.ps1') }}
+          restore-keys: |
+            ${{ matrix.shell }}-modules-
       - name: Install test dependencies
-        shell: powershell
+        shell: ${{ matrix.shell }}
         run: |
           Install-Module -Name BuildHelpers -Force -SkipPublisherCheck
           Install-Module -Name Pester -MaximumVersion 5.99.99 -Force -SkipPublisherCheck
       - name: Test Bucket
-        shell: powershell
-        run: |
-          $env:SCOOP_HOME="$(Convert-Path '.\scoop_core')"
-          .\my_bucket\bin\test.ps1
-  test_pwsh:
-    name: PowerShell
-    runs-on: windows-latest
-    steps:
-      - name: Checkout Bucket
-        uses: actions/checkout@main
-        with:
-          fetch-depth: 2
-          path: my_bucket
-      - name: Checkout Scoop
-        uses: actions/checkout@main
-        with:
-          repository: ScoopInstaller/Scoop
-          path: scoop_core
-      - name: Install test dependencies
-        shell: pwsh
-        run: |
-          Install-Module -Name BuildHelpers -Force -SkipPublisherCheck
-          Install-Module -Name Pester -MaximumVersion 5.99.99 -Force -SkipPublisherCheck
-      - name: Test Bucket
-        shell: pwsh
+        shell: ${{ matrix.shell }}
         run: |
           $env:SCOOP_HOME="$(Convert-Path '.\scoop_core')"
           .\my_bucket\bin\test.ps1
