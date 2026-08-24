@@ -36,7 +36,7 @@ jobs:
       - name: Cache PowerShell modules
         uses: actions/cache@v4
         with:
-          path: ~\Documents\WindowsPowerShell\Modules
+          path: ~/Documents/WindowsPowerShell/Modules
           key: ${{ matrix.shell }}-modules-${{ hashFiles('bin/test.ps1') }}
           restore-keys: |
             ${{ matrix.shell }}-modules-
