@@ -2,6 +2,7 @@
     "version": "0.3.21",
     "description": "Like BetterDisplay, but for Windows. Change resolution, refresh rate, brightness, orientation and HDR of your monitors from the system tray.",
     "homepage": "https://github.com/zpix1/windisplay",
+    "license": "Unknown",
     "architecture": {
         "64bit": {
             "url": "https://github.com/zpix1/windisplay/releases/download/v0.3.21/WinDisplay_0.3.21_x64-setup.exe#/dl.7z",
