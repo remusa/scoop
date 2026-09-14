@@ -1,16 +1,16 @@
 {
-    "version": "0.3.23-fork.1",
+    "version": "0.3.24-fork.1",
     "description": "Like BetterDisplay, but for Windows. Change resolution, refresh rate, brightness, orientation and HDR of your monitors from the system tray.",
     "homepage": "https://github.com/remusa/windisplay",
     "license": "Unknown",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/remusa/windisplay/releases/download/v0.3.23-fork.1/WinDisplay_0.3.23-fork.1_x64-setup.exe#/dl.7z",
-            "hash": "f54f4e882cb24541c7f882b7b47addcbd0ab1bd1ada628837d8ebad866f4b5e3"
+            "url": "https://github.com/remusa/windisplay/releases/download/v0.3.24-fork.1/WinDisplay_0.3.24-fork.1_x64-setup.exe#/dl.7z",
+            "hash": "7615da6ede7a511a6a2094b6387f01614b2f0f7ebf6d74ec438a22ae06e02fe9"
         },
         "arm64": {
-            "url": "https://github.com/remusa/windisplay/releases/download/v0.3.23-fork.1/WinDisplay_0.3.23-fork.1_arm64-setup.exe#/dl.7z",
-            "hash": "c5528eb8a7a2acc417fc7634f2d4a81170265c4445fb0474eED7cd52935311cd"
+            "url": "https://github.com/remusa/windisplay/releases/download/v0.3.24-fork.1/WinDisplay_0.3.24-fork.1_arm64-setup.exe#/dl.7z",
+            "hash": "159b9aaee9461f4d1cf6561eb588acf6e3f9c0696e896de5dc09b3dabdfc0af8"
         }
     },
     "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\", \"$dir\\uninstall.exe\" -Force -Recurse",
