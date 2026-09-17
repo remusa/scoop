@@ -17,6 +17,7 @@ scoop install remusa/<app>
 | App | Version |
 | --- | ------- |
 | [displaymagician](https://github.com/terrymacdonald/DisplayMagician) | [![](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fremusa%2Fscoop%2Fmaster%2Fversions.json&query=%24.displaymagician&label=&color=blue)](https://github.com/terrymacdonald/DisplayMagician) |
+| [fifine-control-deck](https://fifinemicrophone.com/pages/download-fifine-d6-software) | [![](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fremusa%2Fscoop%2Fmaster%2Fversions.json&query=%24.fifine-control-deck&label=&color=blue)](https://fifinemicrophone.com/pages/download-fifine-d6-software) |
 | [futo-notes](https://gitlab.futo.org/futo-notes/futo-notes/-/releases) | [![](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fremusa%2Fscoop%2Fmaster%2Fversions.json&query=%24.futo-notes&label=&color=blue)](https://gitlab.futo.org/futo-notes/futo-notes/-/releases) |
 | [hurl](https://github.com/U-C-S/Hurl) | [![](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fremusa%2Fscoop%2Fmaster%2Fversions.json&query=%24.hurl&label=&color=blue)](https://github.com/U-C-S/Hurl) |
 | [joyxoff](https://joyxoff.com/en/) | [![](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fremusa%2Fscoop%2Fmaster%2Fversions.json&query=%24.joyxoff&label=&color=blue)](https://joyxoff.com/en/) |
