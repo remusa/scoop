@@ -78,3 +78,26 @@ jobs:
         run: |
           $env:SCOOP_HOME="$(Convert-Path '.\scoop_core')"
           .\my_bucket\bin\test.ps1
+
+  commitlint:
+    name: Commit messages
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Bucket
+        uses: actions/checkout@v7
+        with:
+          fetch-depth: 0
+      - name: Setup Bun
+        uses: oven-sh/setup-bun@v2
+      - name: Install dependencies
+        run: bun install --frozen-lockfile
+      - name: Lint commit messages
+        env:
+          BEFORE: ${{ github.event.pull_request.base.sha || github.event.before }}
+        run: |
+          FROM="$BEFORE"
+          if [ -z "$FROM" ] || [ "$FROM" = "0000000000000000000000000000000000000000" ]; then
+            FROM="$(git rev-parse HEAD~1 2>/dev/null || git rev-parse HEAD)"
+          fi
+          echo "Linting $FROM..$GITHUB_SHA"
+          bunx commitlint --from "$FROM" --to "$GITHUB_SHA" --verbose
