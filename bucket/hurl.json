@@ -1,21 +1,22 @@
 {
-    "version": "0.9.3",
+    "version": "0.10.0",
     "description": "Choose the browser to open URLs with, from a simple popup menu",
     "homepage": "https://github.com/U-C-S/Hurl",
     "license": "MIT",
-    "notes": [
-        "After install, set Hurl as default in: Settings > Apps > Default apps > Hurl"
-    ],
+    "notes": "After install, set Hurl as default in: Settings > Apps > Default apps > Hurl",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/U-C-S/Hurl/releases/download/v0.9.3/Hurl_Installer.exe",
-            "hash": "sha256:2E89AB9753A2BD11EE34341451F7D6638D0157065156DFD0FBD23E9880DBEFC2"
+            "url": "https://github.com/U-C-S/Hurl/releases/download/v0.10.0/Hurl_Installer.exe",
+            "hash": "5290fbc11f2b7eef32e23d69c32ba0193af5a7f1f91a8050fddc456d5dd903e8"
         }
     },
     "innosetup": true,
     "bin": [
         "Hurl.exe",
-        ["Launcher.exe", "hurl-launcher"]
+        [
+            "Launcher.exe",
+            "hurl-launcher"
+        ]
     ],
     "shortcuts": [
         [
