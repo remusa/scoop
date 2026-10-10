@@ -1,0 +1,49 @@
+{
+    "version": "1.2.15.0",
+    "##": "Upstream ships an Advanced Installer bootstrapper (fxsound_setup.exe) wrapping fxsound.x64.msi + fxsound1.cab and installing the fxvad virtual audio driver. Non-portable: 'fxsound_setup.exe /extract <dir>' unpacks the x86 MSI, the x64 MSI and the shared cab, then msiexec installs per-machine (ALLUSERS=1) into 'C:\\Program Files\\FxSound LLC\\FxSound'.",
+    "description": "Real-time audio enhancement for Windows - graphic equalizer, effects and presets applied system-wide to playback.",
+    "homepage": "https://www.fxsound.com/",
+    "license": "AGPL-3.0-only",
+    "notes": [
+        "Installs a virtual audio device driver (fxvad) under 'C:\\Program Files\\FxSound LLC\\FxSound' - install from an elevated (Administrator) terminal.",
+        "The x64 MSI + cab are kept in the app directory so 'scoop uninstall fxsound' can run 'msiexec /x'; the unused x86 MSI is deleted after install.",
+        "The installed app ships its own 'updater.exe'. Letting it update in place makes the manifest version drift from what is actually installed; update through scoop instead."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/fxsound2/fxsound-app/releases/download/v1.2.15.0/fxsound_setup.exe",
+            "hash": "175588d38bf2816d74e3995967b9918845219341c0535cf7037028563575f498"
+        }
+    },
+    "installer": {
+        "script": [
+            "$setup = \"$dir\\fxsound_setup.exe\"",
+            "$p = Start-Process $setup -ArgumentList @('/extract', ('\"{0}\"' -f $dir)) -Wait -PassThru",
+            "if ($p.ExitCode -ne 0) { abort \"fxsound_setup /extract failed with exit code $($p.ExitCode)\" }",
+            "Remove-Item $setup -Force",
+            "Remove-Item \"$dir\\fxsound.msi\" -Force -ErrorAction SilentlyContinue",
+            "$msi = \"$dir\\fxsound.x64.msi\"",
+            "$p = Start-Process msiexec.exe -ArgumentList @('/i', ('\"{0}\"' -f $msi), '/qn', '/norestart') -Wait -PassThru",
+            "if ($p.ExitCode -notin @(0, 1641, 3010)) { abort \"msiexec /i failed with exit code $($p.ExitCode)\" }"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "$msi = \"$dir\\fxsound.x64.msi\"",
+            "$p = Start-Process msiexec.exe -ArgumentList @('/x', ('\"{0}\"' -f $msi), '/qn', '/norestart') -Wait -PassThru",
+            "if ($p.ExitCode -notin @(0, 1641, 3010)) { abort \"msiexec /x failed with exit code $($p.ExitCode)\" }"
+        ]
+    },
+    "bin": "C:\\Program Files\\FxSound LLC\\FxSound\\FxSound.exe",
+    "checkver": {
+        "github": "https://github.com/fxsound2/fxsound-app",
+        "regex": "\"tag_name\":\\s*\"v([\\d.]+)\""
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/fxsound2/fxsound-app/releases/download/v$version/fxsound_setup.exe"
+            }
+        }
+    }
+}
