@@ -1,0 +1,46 @@
+{
+    "version": "1.2.14.0",
+    "##": "Upstream ships an Advanced Installer bootstrapper (fxsound_setup.exe) wrapping fxsound.x64.msi + fxsound1.cab and installing the fxvad virtual audio driver. Non-portable: 'fxsound_setup.exe /extract <dir>' unpacks the MSI + cab, then msiexec installs per-machine (ALLUSERS=1).",
+    "description": "Real-time audio enhancement for Windows - graphic equalizer, effects and presets applied system-wide to playback.",
+    "homepage": "https://www.fxsound.com/",
+    "license": "AGPL-3.0-only",
+    "notes": [
+        "Installs a virtual audio device driver (fxvad) and runs from Program Files - install from an elevated (Administrator) terminal.",
+        "The extracted MSI + cab are kept in the app directory so 'scoop uninstall fxsound' can run 'msiexec /x'."
+    ],
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/fxsound2/fxsound-app/releases/download/v1.2.14.0/fxsound_setup.exe",
+            "hash": "sha256:f62b0e74061ebc1a3657617a9fcab58aba3bfe05719af8395d6cc0e33163db15"
+        }
+    },
+    "installer": {
+        "script": [
+            "$setup = \"$dir\\fxsound_setup.exe\"",
+            "$p = Start-Process $setup -ArgumentList @('/extract', ('\"{0}\"' -f $dir)) -Wait -PassThru",
+            "if ($p.ExitCode -ne 0) { abort \"fxsound_setup /extract failed with exit code $($p.ExitCode)\" }",
+            "Remove-Item $setup -Force",
+            "$msi = \"$dir\\fxsound.x64.msi\"",
+            "$p = Start-Process msiexec.exe -ArgumentList @('/i', ('\"{0}\"' -f $msi), '/qn', '/norestart') -Wait -PassThru",
+            "if ($p.ExitCode -notin @(0, 1641, 3010)) { abort \"msiexec /i failed with exit code $($p.ExitCode)\" }"
+        ]
+    },
+    "uninstaller": {
+        "script": [
+            "$msi = \"$dir\\fxsound.x64.msi\"",
+            "$p = Start-Process msiexec.exe -ArgumentList @('/x', ('\"{0}\"' -f $msi), '/qn', '/norestart') -Wait -PassThru",
+            "if ($p.ExitCode -notin @(0, 1641, 3010)) { abort \"msiexec /x failed with exit code $($p.ExitCode)\" }"
+        ]
+    },
+    "checkver": {
+        "github": "https://github.com/fxsound2/fxsound-app",
+        "regex": "v([\\d.]+)"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/fxsound2/fxsound-app/releases/download/v$version/fxsound_setup.exe"
+            }
+        }
+    }
+}
