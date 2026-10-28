@@ -11,16 +11,10 @@
         }
     },
     "innosetup": true,
-    "bin": [
-        "Hurl.exe",
-        [
-            "Launcher.exe",
-            "hurl-launcher"
-        ]
-    ],
+    "bin": "Hurl.exe",
     "shortcuts": [
         [
-            "Launcher.exe",
+            "Hurl.exe",
             "Hurl"
         ]
     ],
