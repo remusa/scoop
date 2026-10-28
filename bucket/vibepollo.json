@@ -11,7 +11,11 @@
     },
     "installer": {
         "script": [
-            "Start-Process -Wait \"$dir\\VibepolloSetup-v2.0.1.exe\" -ArgumentList '/S'"
+            "Start-Process -FilePath \"$dir\\VibepolloSetup-v2.0.1.exe\" -ArgumentList '/S','/norestart' -PassThru | ForEach-Object { Start-Sleep 12; if (-not $_.HasExited) { $_.Kill() } }",
+            "$msi = Get-ChildItem 'C:\\ProgramData\\Vibepollo\\InstallerCache' -Recurse -Filter 'Vibepollo.msi' | Sort-Object LastWriteTime -Descending | Select-Object -First 1",
+            "if (-not $msi) { throw 'Vibepollo MSI not found in installer cache' }",
+            "$p = Start-Process msiexec -ArgumentList (\"/i `\"\" + $msi.FullName + `\"`\" /qn /norestart\") -Wait -PassThru",
+            "if ($p.ExitCode -ne 0) { throw \"MSI install failed with exit code $($p.ExitCode)\" }"
         ]
     },
     "uninstaller": {
