@@ -15,6 +15,6 @@ jobs:
     steps:
       - uses: actions/checkout@v7
       - name: PullRequestHandler
-        uses: ScoopInstaller/GithubActions@2.0.0
+        uses: ScoopInstaller/GithubActions@v3.0.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
