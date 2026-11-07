@@ -1,0 +1,26 @@
+name: README
+
+on:
+  push:
+    branches:
+      - 'main'
+      - 'master'
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  check_apps_table:
+    name: Apps table
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Bucket
+        uses: actions/checkout@v7
+      - name: Check README app table matches bucket/
+        run: bash bin/check-readme.sh
