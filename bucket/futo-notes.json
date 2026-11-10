@@ -1,12 +1,12 @@
 {
-    "version": "1.9.2",
+    "version": "1.9.3",
     "description": "FUTO Notes - Notes, but smart. A smart notes application with local-first encryption and sync capabilities.",
     "homepage": "https://gitlab.futo.org/futo-notes/futo-notes",
     "license": "Source-First-1.1",
     "architecture": {
         "64bit": {
-            "url": "https://gitlab.futo.org/api/v4/projects/488/packages/generic/futo-notes/v1.9.2/FUTO-Notes-1.9.2-x64-setup.exe#/dl.7z",
-            "hash": "3970e797804d81c68db753b010f559c26959f115723c857d00f8d1816be2ee9d"
+            "url": "https://gitlab.futo.org/api/v4/projects/488/packages/generic/futo-notes/v1.9.3/FUTO-Notes-1.9.3-x64-setup.exe#/dl.7z",
+            "hash": "166b00d7f7016fc455e93252be5b9b8bc7876ed82af6fca7ec45ff6c67411baa"
         }
     },
     "post_install": "Remove-Item \"$dir\\`$PLUGINSDIR\" -Force -Recurse",
