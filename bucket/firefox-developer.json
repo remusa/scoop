@@ -1,12 +1,12 @@
 {
-    "version": "160.0b5",
+    "version": "161.0b1",
     "description": "Firefox Developer Edition",
     "homepage": "https://www.mozilla.org/firefox/developer/",
     "license": "MPL-2.0",
     "architecture": {
         "64bit": {
             "url": "https://download.mozilla.org/?product=firefox-devedition-latest-ssl&os=win64&lang=en-US",
-            "hash": "5dcf5b2df6836e618a019841896d1b0a84dd57358181349898e24f7e14056483"
+            "hash": "d3aa1447290c413aeab24de2c235fa2f481d26967df5aa6270df681f68b47a08"
         }
     },
     "installer": {
