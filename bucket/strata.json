@@ -1,0 +1,29 @@
+{
+    "version": "0.2.13",
+    "description": "Local AI, tuned to one model. Runs open-weight models on your own GPU.",
+    "homepage": "https://github.com/Niko1221/Strata",
+    "license": "MIT",
+    "architecture": {
+        "64bit": {
+            "url": "https://github.com/Niko1221/Strata/releases/download/v0.2.13/Strata-0.2.13-windows-x64-setup.exe",
+            "hash": "0da27b00200797a85d79211245ecb094dbe5d0bab7f958b1defdf26fee55627b"
+        }
+    },
+    "installer": {
+        "script": "& \"$dir\\Strata-0.2.13-windows-x64-setup.exe\" /S"
+    },
+    "uninstaller": {
+        "script": "if (Test-Path \"$env:LOCALAPPDATA\\Programs\\Strata\\uninstall.exe\") { Start-Process -Wait \"$env:LOCALAPPDATA\\Programs\\Strata\\uninstall.exe\" -ArgumentList '/S' }"
+    },
+    "checkver": {
+        "github": "https://github.com/Niko1221/Strata"
+    },
+    "autoupdate": {
+        "architecture": {
+            "64bit": {
+                "url": "https://github.com/Niko1221/Strata/releases/download/v$version/Strata-$version-windows-x64-setup.exe"
+            }
+        }
+    },
+    "notes": "NSIS installer (per-user): installs to %LOCALAPPDATA%\\Programs\\Strata and creates Start Menu/Desktop shortcuts. Updates go through the app's own updater or 'scoop update strata'."
+}
