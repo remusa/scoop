@@ -1,17 +1,17 @@
 {
-    "version": "0.2.13",
+    "version": "0.2.12",
     "description": "Local AI, tuned to one model. Runs open-weight models on your own GPU.",
     "homepage": "https://github.com/Niko1221/Strata",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Niko1221/Strata/releases/download/v0.2.13/Strata-0.2.13-windows-x64-setup.exe",
-            "hash": "0da27b00200797a85d79211245ecb094dbe5d0bab7f958b1defdf26fee55627b"
+            "url": "https://github.com/Niko1221/Strata/releases/download/v0.2.12/Strata-0.2.12-windows-x64-setup.exe",
+            "hash": "b56eb5692aa826e0aa8ae5d4819ddee1745e1522822738748c3b6c5a7643b1ff"
         }
     },
     "installer": {
         "script": [
-            "& \"$dir\\Strata-0.2.13-windows-x64-setup.exe\" /S",
+            "& \"$dir\\Strata-0.2.12-windows-x64-setup.exe\" /S",
             "$strataApp = Join-Path $env:LOCALAPPDATA 'Programs\\Strata'; $strataExe = Join-Path $strataApp 'strata-desktop.exe'; $strataDeadline = (Get-Date).AddMinutes(5); do { Start-Sleep -Seconds 2 } while ((Get-Date) -lt $strataDeadline -and -not (Test-Path $strataExe)); if (-not (Test-Path $strataExe)) { throw 'Strata installer did not complete' }"
         ]
     },
@@ -30,7 +30,7 @@
             }
         }
     },
-    "notes": "NSIS installer (per-user): installs to %LOCALAPPDATA%\\Programs\\Strata and creates Start Menu/Desktop shortcuts. Updates go through the app's own updater or 'scoop update strata'.",
+    "notes": "ALL current Strata releases (0.2.12/0.2.13 tested) ship a strata-desktop.exe with a hardcoded build-machine path (C:\\w212app/.../host/server/index.mjs) and crash on start: 'the App Host entry is missing'. Upstream packaging bug, not fixable in this manifest. Manifest retained for when a fixed release ships; checkver will detect new versions.",
     "post_install": [
         "$strataExe = \"$env:LOCALAPPDATA\\Programs\\Strata\\strata-desktop.exe\"",
         "$desktop = [Environment]::GetFolderPath('Desktop')",
