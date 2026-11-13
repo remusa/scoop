@@ -10,10 +10,15 @@
         }
     },
     "installer": {
-        "script": "& \"$dir\\Strata-0.2.13-windows-x64-setup.exe\" /S"
+        "script": [
+            "& \"$dir\\Strata-0.2.13-windows-x64-setup.exe\" /S",
+            "$strataApp = Join-Path $env:LOCALAPPDATA 'Programs\\Strata'; $strataExe = Join-Path $strataApp 'strata-desktop.exe'; $strataDeadline = (Get-Date).AddMinutes(5); do { Start-Sleep -Seconds 2 } while ((Get-Date) -lt $strataDeadline -and -not (Test-Path $strataExe)); if (-not (Test-Path $strataExe)) { throw 'Strata installer did not complete' }"
+        ]
     },
     "uninstaller": {
-        "script": "if (Test-Path \"$env:LOCALAPPDATA\\Programs\\Strata\\uninstall.exe\") { Start-Process -Wait \"$env:LOCALAPPDATA\\Programs\\Strata\\uninstall.exe\" -ArgumentList '/S' }"
+        "script": [
+            "if (Test-Path \"$env:LOCALAPPDATA\\Programs\\Strata\") { Remove-Item -Recurse -Force \"$env:LOCALAPPDATA\\Programs\\Strata\" }"
+        ]
     },
     "checkver": {
         "github": "https://github.com/Niko1221/Strata"
