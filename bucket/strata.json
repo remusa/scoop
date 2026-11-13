@@ -30,5 +30,13 @@
             }
         }
     },
-    "notes": "NSIS installer (per-user): installs to %LOCALAPPDATA%\\Programs\\Strata and creates Start Menu/Desktop shortcuts. Updates go through the app's own updater or 'scoop update strata'."
+    "notes": "NSIS installer (per-user): installs to %LOCALAPPDATA%\\Programs\\Strata and creates Start Menu/Desktop shortcuts. Updates go through the app's own updater or 'scoop update strata'.",
+    "post_install": [
+        "$strataExe = \"$env:LOCALAPPDATA\\Programs\\Strata\\strata-desktop.exe\"",
+        "$desktop = [Environment]::GetFolderPath('Desktop')",
+        "$smp = \"$env:APPDATA\\Microsoft\\Windows\\Start Menu\\Programs\"",
+        "$wsh = New-Object -ComObject WScript.Shell",
+        "$lnk = $wsh.CreateShortcut(\"$desktop\\Strata.lnk\"); $lnk.TargetPath = $strataExe; $lnk.Save()",
+        "$lnk2 = $wsh.CreateShortcut(\"$smp\\Strata.lnk\"); $lnk2.TargetPath = $strataExe; $lnk2.Save()"
+    ]
 }
