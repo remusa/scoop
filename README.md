@@ -17,6 +17,7 @@ scoop install remusa/<app>
 | App | Version |
 | --- | ------- |
 | [achievement-watcher-next](https://shirowwww.github.io/Achievement-Watcher-Next/) | [![](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fremusa%2Fscoop%2Fmaster%2Fversions.json&query=%24.achievement-watcher-next&label=&color=blue)](https://shirowwww.github.io/Achievement-Watcher-Next/) |
+| [achievements](https://pserban93.github.io/Achievements-Docs/) | [![](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fremusa%2Fscoop%2Fmaster%2Fversions.json&query=%24.achievements&label=&color=blue)](https://pserban93.github.io/Achievements-Docs/) |
 | [displaymagician](https://github.com/terrymacdonald/DisplayMagician) | [![](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fremusa%2Fscoop%2Fmaster%2Fversions.json&query=%24.displaymagician&label=&color=blue)](https://github.com/terrymacdonald/DisplayMagician) |
 | [dlss-swapper](https://github.com/beeradmoore/dlss-swapper) | [![](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fremusa%2Fscoop%2Fmaster%2Fversions.json&query=%24.dlss-swapper&label=&color=blue)](https://github.com/beeradmoore/dlss-swapper) |
 | [dlss5-swapper](https://github.com/rakanki911/DLSS5-Swapper) | [![](https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fraw.githubusercontent.com%2Fremusa%2Fscoop%2Fmaster%2Fversions.json&query=%24.dlss5-swapper&label=&color=blue)](https://github.com/rakanki911/DLSS5-Swapper) |
