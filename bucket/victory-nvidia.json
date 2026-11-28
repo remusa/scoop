@@ -14,14 +14,5 @@
     "checkver": "github",
     "autoupdate": {
         "url": "https://github.com/trustno1-coder/VIctory-NVIDIA/releases/download/v$version/victory.exe"
-    },
-    "shortcuts": [
-        [
-            "victory.exe",
-            "VIctory-NVIDIA"
-        ]
-    ],
-    "post_install": [
-        "if (Test-Path \"$env:USERPROFILE\\Desktop\") { $ws = New-Object -ComObject WScript.Shell; $sc = $ws.CreateShortcut(\"$env:USERPROFILE\\Desktop\\VIctory-NVIDIA.lnk\"); $sc.TargetPath = \"$dir\\victory.exe\"; $sc.WorkingDirectory = \"$dir\"; $sc.Save() }"
-    ]
+    }
 }
