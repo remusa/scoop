@@ -1,12 +1,12 @@
 {
-    "version": "0.2.22",
+    "version": "0.2.23",
     "description": "Local AI, tuned to one model. Runs open-weight models on your own GPU.",
     "homepage": "https://github.com/Niko1221/Strata",
     "license": "MIT",
     "architecture": {
         "64bit": {
-            "url": "https://github.com/Niko1221/Strata/releases/download/v0.2.22/Strata-0.2.22-windows-x64-setup.exe",
-            "hash": "d978eed0e144ccfb1c286be7ef5c2b35e85eaf7bf2f56325979e61413e07b1ca"
+            "url": "https://github.com/Niko1221/Strata/releases/download/v0.2.23/Strata-0.2.23-windows-x64-setup.exe",
+            "hash": "5f620817dc4be0db6122697b2c1a0f08bbafcb52961cb17a5ba6634ca44d4240"
         }
     },
     "installer": {
